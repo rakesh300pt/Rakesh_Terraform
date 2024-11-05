@@ -1,0 +1,30 @@
+---
+version: "2.4"
+services:
+  tomcat33:
+    build:
+      context: /home/azureuser/docker-docs/
+      dockerfile: Dockerfile
+    image: d5tomcat:9.0
+    ports:
+      - 8086:8080
+    volumes:
+      - /home/azureuser/mounts/:/home/
+    networks:
+      - demobridge
+
+  tomcat32:
+    build:
+      context: /home/azureuser/docker-docs/
+      dockerfile: Dockerfile
+    image: d6tomcat:9.0
+    ports:
+      - 8087:8080
+    volumes:
+      - /home/azureuser/mounts/:/home/
+    networks:
+      - demobridge
+networks:
+ demobridge:
+    external: true 
+
